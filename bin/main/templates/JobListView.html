@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>仕事一覧</h1>
-<form action="#" th:action="@{/EntryForm}" th:object="${Form}" method="post">
+<form action="#" th:action="@{/EntryForm}" th:object="${Job}" method="post">
 	<table>
 		<tr>
 			<th>ID</th>
@@ -22,7 +22,7 @@
 			<td th:text="${jobList.salary}"></td>
 
 			<td>
-				<input type="submit" name="EntryForm" value="エントリー">
+				<a href="/EntryForm" th:href="@{/EntryForm(id=${jobList.id})}" >エントリー</a>
 			</td>
 		</tr>
 	</table>

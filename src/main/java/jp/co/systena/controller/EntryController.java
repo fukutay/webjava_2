@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import jp.co.systena.model.*;
+import jp.co.systena.model.EntryForm;
 
 
 @Controller
@@ -20,9 +20,6 @@ public class EntryController {
 
 	EntryForm entry = (EntryForm) session.getAttribute("entry");
 	mav.addObject("entryName", entry.getName());
-	mav.addObject("entryCName", entry.getCName());
-	mav.addObject("entryStatus", entry.getStatus());
-	mav.addObject("entryMotive", entry.getMotive());
 	//テンプレート指定
 	mav.setViewName("EntryView");
 	//セッションクリア

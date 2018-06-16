@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import jp.co.systena.model.Form;
 import jp.co.systena.model.Job;
 import jp.co.systena.model.JobListService;
 
@@ -27,17 +27,26 @@ public class JobListController {
     return mav;
   }
 
+  @RequestMapping (value="/EntryForm", method = RequestMethod.GET)
+  public ModelAndView show(ModelAndView mav,
+                            Job job,
+                            @RequestParam(name = "id", required = true) int id
+                            ) {
 
-  @RequestMapping (value="/EntryForm", method = RequestMethod.POST)
-  public String indexForm(Form form) {
+  job = new JobListService().findJobById(id);
 
-    //int id = form.getId();
-    Job job = new JobListService().findJobById(form.getId());
+  mav.addObject("formName", job.getName());
+  mav.addObject("formStatus", job.getStatus());
+  mav.addObject("formSalary", job.getSalary());
 
-	//セッションを保存
-	session.setAttribute("form", form);
+  //テンプレート指定
+  if (job.getStatus() == "正社員" ) {
+    mav.setViewName("EntryFormView01");
+  }
+  if (job.getStatus() == "契約社員" ) {
+    mav.setViewName("EntryFormView02");
+  }
 
-	//リダイレクト
-	return "redirect:/EntryForm";
+  return mav;
   }
 }
