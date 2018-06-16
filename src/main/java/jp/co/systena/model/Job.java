@@ -15,7 +15,7 @@ public class Job {
   }
 
   public Job() {
-	  
+
   }
 
   public int getId() {
@@ -46,8 +46,7 @@ public class Job {
    return this.salary;
  }
 
-
- public void setPrice(int salary) {
+ public void setSalary(int salary) {
    this.salary = salary;
  }
 }
