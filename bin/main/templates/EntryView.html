@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>EntryForm</title>
+	<meta charset="UTF-8" />
+</head>
+<body>
+	<div>
+    <span>以下の情報を送信しました。</span>
+	</div>
+	<table border="0">
+	<br />
+		<span th:text="${entryName}"></span>
+		<span>様</span>
+		<br />
+		<span>会社名: </span>
+		<span th:text="${entryCName}"></span>
+		<br />
+		<span>契約形態: </span>
+		<span th:text="${entryStatus}"></span>
+		<br />
+		<span>応募動機: </span>
+		<span th:text="${entryMotive}"></span>
+		<br />
+	</table>
+</body>
+</html>

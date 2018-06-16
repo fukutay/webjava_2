@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>JobListView</title>
+	<meta charset="UTF-8" />
+</head>
+<body>
+<h1>仕事一覧</h1>
+<form action="#" th:action="@{/EntryForm}" th:object="${Form}" method="post">
+	<table>
+		<tr>
+			<th>ID</th>
+			<th>会社名</th>
+			<th>契約形態</th>
+			<th>給与(月額)</th>
+
+		</tr>
+      		<tr th:each="jobList: ${jobList}" >
+			<td th:text="${jobList.id}"></td>
+			<td th:text="${jobList.name}"></td>
+			<td th:text="${jobList.status}"></td>
+			<td th:text="${jobList.salary}"></td>
+			<td>
+				<input type="submit" name="EntryForm" value="エントリー">
+			</td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>
