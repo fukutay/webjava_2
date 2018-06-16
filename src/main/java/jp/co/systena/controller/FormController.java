@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
-import jp.co.systena.model.*;
+import jp.co.systena.model.EntryForm;
+import jp.co.systena.model.Form;
 
 
 @Controller
@@ -32,7 +32,7 @@ public class FormController {
   }
 
   @RequestMapping (value="/Entry", method = RequestMethod.POST)
-  public String entryForm(EntryForm entry) {
+  public String send(EntryForm entry) {
 
 	//セッションを保存
 	session.setAttribute("entry", entry);
